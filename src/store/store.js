@@ -4,6 +4,9 @@ import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import rootSaga from "../actions/sagas";
 import rootReducer from "../reducers";
+import { routerMiddleware } from 'connected-react-router'
+import { createBrowserHistory } from "history";
+export const history = createBrowserHistory()
 
 const sagaMiddleware = createSagaMiddleware();
 //   const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
@@ -14,9 +17,9 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer(history));
 
-const store = createStore(persistedReducer, applyMiddleware(sagaMiddleware));
+const store = createStore(persistedReducer, applyMiddleware(routerMiddleware(history),sagaMiddleware));
 sagaMiddleware.run(rootSaga);
 
 const persistor = persistStore(store);

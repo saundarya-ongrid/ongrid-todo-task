@@ -1,7 +1,8 @@
+import { Button } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
 
-const OutputComponent = () => {
+const OutputComponent = (props) => {
   const customAsyncData = useSelector((state) => state.customAsyncData.data);
   //   console.log('output data', customAsyncData)
   const { author, date, title } =
@@ -12,7 +13,8 @@ const OutputComponent = () => {
       : { author: "", date: "", title: "" };
   return (
     <div>
-      output
+      <Button type='primary' onClick={()=>props.history.goBack()}>Back</Button> <br/>
+      Output
       <div>
         <p>
           {author}
