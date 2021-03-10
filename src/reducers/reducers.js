@@ -1,15 +1,14 @@
 const initialState = {
-  data: "",
+    data: {}
 };
 
 const customAsyncData = (state = initialState, action) => {
-  const newState = { ...state };
-  switch (action.type) {
-    case "SET_DATA":
-      newState.data = action.payload;
-      return newState;
-    default:
-      return newState;
-  }
+  
+    switch (action.type) {
+      case "SET_DATA":
+        return { ...state, data: action.payload };
+      default:
+        return state;
+    }
 };
 export { customAsyncData };
