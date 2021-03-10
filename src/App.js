@@ -3,7 +3,7 @@ import React from 'react'
 export const App = () => {
   return (
     <div>
-      Ongrid Home
+      Ongrid Home.
     </div>
   )
 }
