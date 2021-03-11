@@ -1,15 +1,21 @@
-import { Col } from "antd";
+import { Col, message } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { loginUserAction } from "../../../actions/allActions";
 import { BasicForm } from "../../../components/Forms/BasicForm";
 import { loginForm } from "../../../static/FormJsonObj/FormJsonObj";
 
-export const Login = () => {
+export const Login = (props) => {
   const dispatch = useDispatch();
   const login = (values) => {
-    console.log("values", values);
-    dispatch(loginUserAction());
+    // console.log("values", values);
+
+    if (values.username === "admin" && values.password === "ongrid") {
+      dispatch(loginUserAction(values));
+      props.history.push("/dashboard");
+    } else {
+      message.info("Wrong Credentials");
+    }
   };
   return (
     <div style={{ background: "#F6F5F7", height: "100vh" }}>

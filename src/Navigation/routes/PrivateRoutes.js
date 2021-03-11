@@ -1,20 +1,23 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 
+export const PrivateRoute = ({ component: Component, ...rest }) => {
+  const isAuthenticated = useSelector((state) => state.loginReducer.isAuth);
 
-export const PrivateRoute = ({
-    isAuthenticated, 
-    component: Component,
-    ...rest
-}) => (
-    <Route {...rest} component={(props) => (
+  return (
+    <Route
+      {...rest}
+      component={(props) =>
         isAuthenticated ? (
-            <div>
-                {/* <Header /> */}
-                <Component {...props} />
-            </div>            
-        ): (
-            <Redirect to="/" />
+          <div>
+            {/* <Header /> */}
+            <Component {...props} />
+          </div>
+        ) : (
+          <Redirect to="/" />
         )
-    )} />
-)
+      }
+    />
+  );
+};
