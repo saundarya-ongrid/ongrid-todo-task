@@ -1,16 +1,16 @@
 import * as types from "./index";
 
-const getAsyncData = () => {
+export const getAsyncData = () => {
   return {
     type: "GET_ASYNC_DATA",
   };
 };
 
-const loginUserAction = (user) => {
+export const loginUserAction = (user) => {
   return {
     type: types.LOGIN_USER,
     user,
   };
 };
 
-export default { getAsyncData, loginUserAction };
+
