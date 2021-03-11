@@ -13,3 +13,7 @@ export function* loginSaga(payload) {
     yield put({ type: types.LOGIN_USER_ERROR, error })
   }
 }
+
+export function* logout() {
+    yield put({ type: types.LOG_OUT_USER })
+}

@@ -1,7 +1,7 @@
 import { takeLatest } from "redux-saga/effects";
 // import axios from "axios";
 import * as types from '../actions';
-import { loginSaga } from "./authenticationSaga";
+import { loginSaga, logout } from "./authenticationSaga";
 // const runOurAction = function* () {
 //   let remoteData;
 //   yield axios.get("https://httpbin.org/json").then((resp) => {
@@ -12,5 +12,7 @@ import { loginSaga } from "./authenticationSaga";
 export default function* getAsyncDataWatcher() {
   // yield takeLatest("GET_ASYNC_DATA", runOurAction);
   yield takeLatest(types.LOGIN_USER, loginSaga);
+  yield takeLatest(types.LOG_OUT, logout);
+
 }
 

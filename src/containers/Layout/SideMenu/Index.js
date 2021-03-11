@@ -2,13 +2,23 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { MenuLinks } from "./MenuLinks/MenuLinks";
 import { history } from "../../../store/store";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../actions/allActions";
+
 
 const { Sider } = Layout;
 
 export const SideMenu = (props) => {
+const dispatch = useDispatch();
+
   // console.log(props)
 
   const onClickMenu = (url) => {
+    if (url === "/") {
+      dispatch(logoutAction());
+      localStorage.clear();
+      return history.push(url);
+    }
     return history.push(url);
   };
   return (

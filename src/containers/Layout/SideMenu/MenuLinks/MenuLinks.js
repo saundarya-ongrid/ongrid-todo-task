@@ -1,4 +1,4 @@
-import { CarryOutOutlined, HomeOutlined } from "@ant-design/icons";
+import { CarryOutOutlined, HomeOutlined, LogoutOutlined } from "@ant-design/icons";
 
 export const MenuLinks = [
   {
@@ -13,5 +13,12 @@ export const MenuLinks = [
     name: "todos",
     href: "/todos",
     icon: <CarryOutOutlined />,
+  },
+
+  {
+    title: "Logout",
+    name: "logout",
+    href: "/",
+    icon: <LogoutOutlined />,
   },
 ];
