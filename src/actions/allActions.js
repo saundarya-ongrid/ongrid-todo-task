@@ -1,7 +1,16 @@
-  const getAsyncData = () => {
-    return {
-      type: "GET_ASYNC_DATA",
-    };
+import * as types from "./index";
+
+const getAsyncData = () => {
+  return {
+    type: "GET_ASYNC_DATA",
   };
-  
-  export default { getAsyncData };
+};
+
+const loginUserAction = (user) => {
+  return {
+    type: types.LOGIN_USER,
+    user,
+  };
+};
+
+export default { getAsyncData, loginUserAction };

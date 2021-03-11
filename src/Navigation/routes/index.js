@@ -7,6 +7,9 @@ const routes = (
   <Switch>
     <Route exact path="/" component={ActionComponent} />
     <Route path="/output" component={OutputComponent} />
+
+    {/* <PublicRoute path="/" component={LoginPage} exact={true}/>      
+    <PrivateRoute path="/dashboard" component={Dashboard}/> */}
   </Switch>
 );
 
