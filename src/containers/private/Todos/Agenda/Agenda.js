@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from "react-agenda";
+import { useDispatch } from "react-redux";
+import { todoAction } from "../../../../actions/allActions";
 
 export const Agenda = () => {
+  const dispatch = useDispatch();
   const now = new Date();
   const colors = {
     todo: "rgba(235, 85, 59, 1)",
@@ -106,24 +109,7 @@ export const Agenda = () => {
       ),
       classes: "done",
     },
-    {
-      _id: "event-6",
-      name: "Fun Day !",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 7,
-        9,
-        14
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 7,
-        17
-      ),
-      classes: "todo",
-    },
+
   ]);
   const [selected, setSelected] = useState([]);
   const [cellHeight, setcellHeight] = useState(60 / 4);
@@ -135,11 +121,11 @@ export const Agenda = () => {
 
   // const [showCtrl, setshowCtrl]= useState(false);
 
-  // console.log('selected', selected)
+//   console.log('items', items)
 
-  // useEffect(()=>{
-  //  setItems(items)
-  // },[items])
+  useEffect(()=>{
+    dispatch(todoAction(items));
+  },[items])
 
   const handleItemEdit = (item, openModalVal) => {
     if (item && openModalVal === true) {

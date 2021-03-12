@@ -19,3 +19,9 @@ export const logoutAction = () => {
   };
 };
 
+export const todoAction = (val) => {
+  return {
+    type: types.TODO,
+    val
+  };
+}
