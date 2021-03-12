@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from "react-agenda";
-import { useDispatch } from "react-redux";
+import { ReactAgenda, ReactAgendaCtrl, Modal } from "react-agenda";
+import { useDispatch, useSelector } from "react-redux";
 import { todoAction } from "../../../../actions/allActions";
 
 export const Agenda = () => {
   const dispatch = useDispatch();
+  const storedTodo = useSelector(state=>state.todoReducer.todoData)
+  storedTodo.map(val=>val.startDateTime=new Date(val.startDateTime))
   const now = new Date();
   const colors = {
     todo: "rgba(235, 85, 59, 1)",
@@ -13,104 +15,7 @@ export const Agenda = () => {
     done: "rgba(102, 195, 131 , 1)",
   };
 
-  const [items, setItems] = useState([
-    {
-      _id: guid(),
-      name: "Meeting , dev staff!",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        10,
-        0
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        12,
-        0
-      ),
-      classes: "done",
-    },
-    {
-      _id: guid(),
-      name: "Working lunch , Holly",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 1,
-        11,
-        0
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 1,
-        13,
-        0
-      ),
-      classes: "inProgress",
-    },
-    {
-      _id: guid(),
-      name: "Conference , plaza",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 1,
-        11,
-        0
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 1,
-        14,
-        30
-      ),
-      classes: "todo",
-    },
-    {
-      _id: "event-4",
-      name: "Customers issues review",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 2,
-        10,
-        0
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 2,
-        15,
-        0
-      ),
-      classes: "todo",
-    },
-    {
-      _id: "event-5",
-      name: "Group activity",
-      startDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 3,
-        10,
-        0
-      ),
-      endDateTime: new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate() + 3,
-        16,
-        30
-      ),
-      classes: "done",
-    },
-
-  ]);
+  const [items, setItems] = useState(storedTodo);
   const [selected, setSelected] = useState([]);
   const [cellHeight, setcellHeight] = useState(60 / 4);
   const [showModal, setshowModal] = useState(false);
@@ -125,7 +30,7 @@ export const Agenda = () => {
 
   useEffect(()=>{
     dispatch(todoAction(items));
-  },[items])
+  },[items,selected])
 
   const handleItemEdit = (item, openModalVal) => {
     if (item && openModalVal === true) {

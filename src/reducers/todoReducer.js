@@ -1,11 +1,11 @@
 import * as types from "../actions";
 
 const initialState = {
-  todoData:''
+  todoData:[]
 };
 
 const todoReducer = (state = initialState, action) => {
-  console.log('actions todo', action.response)
+  // console.log('actions todo', action.response)
   switch (action.type) {
     case types.TODO_SUCCESS:
       return { ...state, todoData: action.response };
