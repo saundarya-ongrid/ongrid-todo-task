@@ -1,15 +1,25 @@
 import { Col, Row } from "antd";
 import React from "react";
+import { useSelector } from "react-redux";
 import { PieChart } from "../../../../components/Charts/Pie/Index";
 
 export const TaskStatus = () => {
+  const storedTodo = useSelector(state=>state.todoReducer.todoData)
+  storedTodo.map(val=>val.startDateTime=new Date(val.startDateTime))
+
+  const totalTask = storedTodo.length
+  const totalTodo = storedTodo.filter(val=>val.classes==='todo').length
+  const totalInprogress = storedTodo.filter(val=>val.classes==='inProgress').length
+  const totalDone = storedTodo.filter(val=>val.classes==='done').length
+
+
   const dummySeries = [
-    [44, 15],
-    [44, 15],
-    [44, 10],
+    [totalTask, totalDone],
+    [totalTask, totalInprogress],
+    [totalTask, totalTodo],
   ];
 
-  const dummyOptions = [
+  const Options = [
     {
       chart: {
         width: 200,
@@ -88,7 +98,7 @@ export const TaskStatus = () => {
               background: "white",
             }}
           >
-            <PieChart series={value} options={dummyOptions[index]} />
+            <PieChart series={value} options={Options[index]} />
           </Col>
         );
       })}
