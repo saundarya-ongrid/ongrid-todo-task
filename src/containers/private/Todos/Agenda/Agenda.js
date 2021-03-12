@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from "react-agenda";
 
 export const Agenda = () => {
   const now = new Date();
   const colors = {
-    "color-1": "rgba(102, 195, 131 , 1)",
-    "color-2": "rgba(242, 177, 52, 1)",
-    "color-3": "rgba(235, 85, 59, 1)",
-    "color-4": "rgba(70, 159, 213, 1)",
-    "color-5": "rgba(170, 59, 123, 1)",
+    todo: "rgba(235, 85, 59, 1)",
+    inProgress: "rgba(242, 177, 52, 1)",
+    done: "rgba(102, 195, 131 , 1)",
   };
 
   const [items, setItems] = useState([
@@ -30,7 +28,7 @@ export const Agenda = () => {
         12,
         0
       ),
-      classes: "color-1 color-4",
+      classes: "done",
     },
     {
       _id: guid(),
@@ -49,7 +47,7 @@ export const Agenda = () => {
         13,
         0
       ),
-      classes: "color-2",
+      classes: "inProgress",
     },
     {
       _id: guid(),
@@ -68,7 +66,7 @@ export const Agenda = () => {
         14,
         30
       ),
-      classes: "color-4",
+      classes: "todo",
     },
     {
       _id: "event-4",
@@ -87,7 +85,7 @@ export const Agenda = () => {
         15,
         0
       ),
-      classes: "color-3",
+      classes: "todo",
     },
     {
       _id: "event-5",
@@ -106,7 +104,7 @@ export const Agenda = () => {
         16,
         30
       ),
-      classes: "color-4",
+      classes: "done",
     },
     {
       _id: "event-6",
@@ -124,15 +122,17 @@ export const Agenda = () => {
         now.getDate() + 7,
         17
       ),
-      classes: "color-3",
+      classes: "todo",
     },
   ]);
   const [selected, setSelected] = useState([]);
   const [cellHeight, setcellHeight] = useState(60 / 4);
   const [showModal, setshowModal] = useState(false);
-  const [rowsPerHour, setrowsPerHour] = useState(4);
+  //   const [rowsPerHour, setrowsPerHour] = useState(4);
   const [numberOfDays, setnumberOfDays] = useState(4);
   const [startDate, setstartDate] = useState(new Date());
+  const [endDate, setendDate] = useState(new Date());
+
   // const [showCtrl, setshowCtrl]= useState(false);
 
   // console.log('selected', selected)
@@ -165,6 +165,7 @@ export const Agenda = () => {
 
   const handleDateRangeChange = (startDate, endDate) => {
     setstartDate(startDate);
+    setendDate(endDate);
   };
 
   const handleRangeSelection = (selected) => {
@@ -215,6 +216,7 @@ export const Agenda = () => {
   const changeView = (days) => {
     setnumberOfDays(days);
   };
+
   return (
     <div className="content-expanded ">
       <div className="control-buttons">
@@ -252,6 +254,7 @@ export const Agenda = () => {
         minDate={new Date(now.getFullYear(), now.getMonth() - 3)}
         maxDate={new Date(now.getFullYear(), now.getMonth() + 3)}
         startDate={startDate}
+        endDate={endDate}
         startAtTime={8}
         endAtTime={23}
         cellHeight={cellHeight}
@@ -259,7 +262,7 @@ export const Agenda = () => {
         items={items}
         numberOfDays={numberOfDays}
         headFormat={"ddd DD MMM"}
-        rowsPerHour={rowsPerHour}
+        rowsPerHour={4}
         itemColors={colors}
         helper={true}
         //itemComponent={AgendaItem}
@@ -285,6 +288,17 @@ export const Agenda = () => {
               edit={editEvent}
             />
           </div>
+          <span
+            style={{
+              display: "flex",
+              fontWeight: "bold",
+              justifyContent: "space-around",
+            }}
+          >
+            <span style={{ color: "rgba(235, 85, 59, 1)" }}>*Todo</span>
+            <span style={{ color: "rgba(242, 177, 52, 1)" }}>*In Progress</span>
+            <span style={{ color: "rgba(102, 195, 131 , 1)" }}>*Done </span>
+          </span>
         </Modal>
       ) : (
         ""
