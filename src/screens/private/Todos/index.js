@@ -3,11 +3,11 @@ import { Agenda } from './container/Agenda/Agenda'
 // import Agenda from './Agenda/AgendaClass'
 
 import './index.css'
-export const Todos = () => {
+export const Todos = (props) => {
     return (
         <div>
             <h1>Todos</h1>
-            <Agenda />
+            <Agenda type={props.type}/>
         </div>
     )
 }

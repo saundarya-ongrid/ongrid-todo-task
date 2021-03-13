@@ -1,13 +1,28 @@
-import React from 'react'
-import { CustomButton } from '../../../shared/UI/CustomButton'
-import { WelcomeHead } from './components/WelcomeHead/WelcomeHead'
-
+import React from "react";
+import { CustomButton } from "../../../shared/UI/CustomButton";
+import { DemoApp } from "./components/DemoApp/DemoApp";
+import { WelcomeHead } from "./components/WelcomeHead/WelcomeHead";
 
 export const Home = (props) => {
-    return (
-        <div>
-            <WelcomeHead />
-            <CustomButton title='Login' onClick={()=>props.history.push('/login')}/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <WelcomeHead />
+      <DemoApp />
+      <center>
+        <CustomButton
+          shape="round"
+          style={{
+            width: "250px",
+            height: "70px",
+            fontSize: "22px",
+            marginBottom: "2%",
+            border: "none",
+            background: "#1F837D",
+          }}
+          title="Login"
+          onClick={() => props.history.push("/login")}
+        />
+      </center>
+    </div>
+  );
+};

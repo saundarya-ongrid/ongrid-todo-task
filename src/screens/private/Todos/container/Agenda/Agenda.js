@@ -8,8 +8,9 @@ import {
   ZoomOutOutlined,
 } from "@ant-design/icons";
 import { CustomButton } from "../../../../../shared/UI/CustomButton";
+import { message } from "antd";
 
-export const Agenda = () => {
+export const Agenda = (props) => {
   const dispatch = useDispatch();
   const storedTodo = useSelector((state) => state.todoReducer.todoData);
   storedTodo.map((val) => (val.startDateTime = new Date(val.startDateTime)));
@@ -20,7 +21,7 @@ export const Agenda = () => {
     done: "#086E4D",
   };
 
-  const [items, setItems] = useState(storedTodo);
+  const [items, setItems] = useState(props.type==='demo'?[]:storedTodo);
   const [selected, setSelected] = useState([]);
   const [cellHeight, setcellHeight] = useState(60 / 4);
   const [showModal, setshowModal] = useState(false);
@@ -34,7 +35,16 @@ export const Agenda = () => {
   //   console.log('items', items)
 
   useEffect(() => {
-    dispatch(todoAction(items));
+    if(props.type==='demo'){
+      if(items.length>5){
+        message.info('You Can Only Add Upto 5 Todo, Please Login To Add More')
+      }
+
+    }
+    else{
+      dispatch(todoAction(items));
+
+    }
   }, [items, selected]);
 
   const handleItemEdit = (item, openModalVal) => {
@@ -142,7 +152,7 @@ export const Agenda = () => {
         endAtTime={23}
         cellHeight={cellHeight}
         //   locale="fr"
-        items={items}
+        items={props.type==='demo'?items.slice(0,5):items}
         numberOfDays={numberOfDays}
         headFormat={"ddd DD MMM"}
         rowsPerHour={4}
