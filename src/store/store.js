@@ -2,10 +2,12 @@ import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import rootReducer from "../reducers";
+
 import { routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from "history";
-import rootSaga from "../sagas";
+import rootReducer from "./reducers";
+import rootSaga from "./sagas";
+
 export const history = createBrowserHistory()
 
 const sagaMiddleware = createSagaMiddleware();
