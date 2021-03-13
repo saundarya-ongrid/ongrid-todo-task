@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch } from "react-router";
-import { Dashboard } from "../../containers/private/Dashboard";
-import { Todos } from "../../containers/private/Todos";
-import { Home } from "../../containers/public/Home";
-import { Login } from "../../containers/public/Login";
+import { Dashboard } from "../../screens/private/Dashboard";
+import { Todos } from "../../screens/private/Todos";
+import { Home } from "../../screens/public/Home";
+import { Login } from "../../screens/public/Login";
 import { PrivateRoute } from "./PrivateRoutes";
 import { PublicRoutes } from "./PublicRoutes";
 

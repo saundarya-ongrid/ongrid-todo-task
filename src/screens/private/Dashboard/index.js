@@ -1,5 +1,6 @@
 import React from 'react'
-import { TaskStatus } from './TaskStatus/TaskStatus'
+import { TaskStatus } from './container/TaskStatus/TaskStatus'
+
 
 export const Dashboard = () => {
     return (

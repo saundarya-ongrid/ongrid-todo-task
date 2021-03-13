@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { ReactAgenda, ReactAgendaCtrl, Modal } from "react-agenda";
 import { useDispatch, useSelector } from "react-redux";
-import { todoAction } from "../../../../actions/allActions";
+import { todoAction } from "../../../../../actions/allActions";
 
 export const Agenda = () => {
   const dispatch = useDispatch();
