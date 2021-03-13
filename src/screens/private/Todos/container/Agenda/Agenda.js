@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
 import { ReactAgenda, ReactAgendaCtrl, Modal } from "react-agenda";
 import { useDispatch, useSelector } from "react-redux";
 import { todoAction } from "../../actions/todoAction";
-
+import {
+  ScheduleOutlined,
+  ZoomInOutlined,
+  ZoomOutOutlined,
+} from "@ant-design/icons";
+import { CustomButton } from "../../../../../shared/UI/CustomButton";
 
 export const Agenda = () => {
   const dispatch = useDispatch();
-  const storedTodo = useSelector(state=>state.todoReducer.todoData)
-  storedTodo.map(val=>val.startDateTime=new Date(val.startDateTime))
+  const storedTodo = useSelector((state) => state.todoReducer.todoData);
+  storedTodo.map((val) => (val.startDateTime = new Date(val.startDateTime)));
   const now = new Date();
   const colors = {
     todo: "rgba(235, 85, 59, 1)",
@@ -27,11 +31,11 @@ export const Agenda = () => {
 
   // const [showCtrl, setshowCtrl]= useState(false);
 
-//   console.log('items', items)
+  //   console.log('items', items)
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(todoAction(items));
-  },[items,selected])
+  }, [items, selected]);
 
   const handleItemEdit = (item, openModalVal) => {
     if (item && openModalVal === true) {
@@ -109,37 +113,24 @@ export const Agenda = () => {
     setnumberOfDays(days);
   };
 
+  const daysButton = [7, 4, 3, 1];
+
   return (
     <div className="content-expanded ">
       <div className="control-buttons">
-        <button className="button-control" onClick={zoomIn}>
-          {" "}
-          <i className="zoom-plus-icon"></i>{" "}
-        </button>
-        <button className="button-control" onClick={zoomOut}>
-          {" "}
-          <i className="zoom-minus-icon"></i>{" "}
-        </button>
-        <button className="button-control" onClick={openModal}>
-          {" "}
-          <i className="schedule-icon"></i>{" "}
-        </button>
-        <button className="button-control" onClick={() => changeView(7)}>
-          {" "}
-          {moment.duration(7, "days").humanize()}{" "}
-        </button>
-        <button className="button-control" onClick={() => changeView(4)}>
-          {" "}
-          {moment.duration(4, "days").humanize()}{" "}
-        </button>
-        <button className="button-control" onClick={() => changeView(3)}>
-          {" "}
-          {moment.duration(3, "days").humanize()}{" "}
-        </button>
-        <button className="button-control" onClick={() => changeView(1)}>
-          {" "}
-          {moment.duration(1, "day").humanize()}{" "}
-        </button>
+        <ZoomInOutlined className="commonIconStyle" onClick={zoomIn} />
+        <ZoomOutOutlined className="commonIconStyle" onClick={zoomOut} />
+        <ScheduleOutlined className="commonIconStyle" onClick={openModal} />
+
+        {daysButton.map((val, index) => {
+          return (
+            <CustomButton
+              title={val === 1 ? `${val} day` : `${val} days`}
+              key={index}
+              onClick={() => changeView(val)}
+            />
+          );
+        })}
       </div>
 
       <ReactAgenda
@@ -170,8 +161,8 @@ export const Agenda = () => {
         onDateRangeChange={handleDateRangeChange}
       />
       {showModal ? (
-        <Modal clickOutside={closeModal}>
-          <div className="modal-content">
+        <Modal style={{colors:'black'}} clickOutside={closeModal}>
+          <div style={{color:'black'}}>
             <ReactAgendaCtrl
               items={items}
               itemColors={colors}

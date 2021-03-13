@@ -19,7 +19,7 @@ export const Login = (props) => {
     }
   };
   return (
-    <div style={{ background: "#F6F5F7", height: "100vh" }}>
+    <div style={{ backgroundImage:'linear-gradient(to right bottom, #08272c, #02232d, #011f2d, #031b2c, #08162a, #071427, #051224, #030f21, #000f1c, #000e17, #000c10, #010809)', height: "100vh" }}>
       <div style={{ paddingTop: "13%" }}>
         <Col
           lg={{ span: 10, offset: 7 }}
@@ -28,9 +28,9 @@ export const Login = (props) => {
             padding: "15px",
             borderRadius: "10px",
             backgroundImage:
-              "linear-gradient(to right bottom, #f1bbbd, #eebecd, #e7c3dc, #dbc9e8, #cfcfef)",
+              "linear-gradient(to right bottom, #05191c, #021a19, #031b14, #091b0c, #131a02)",
             boxShadow:
-              "0 0 0 1px rgb(16 22 26 / 10%), 0 4px 8px rgb(16 22 26 / 20%), 0 18px 46px 6px rgb(16 22 26 / 20%)",
+              "10px 18px 16px -6px black",
           }}
         >
           <h1>Login</h1>
