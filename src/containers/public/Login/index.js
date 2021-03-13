@@ -2,8 +2,9 @@ import { Col, message } from "antd";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { loginUserAction } from "../../../actions/allActions";
-import { BasicForm } from "../../../components/Forms/BasicForm";
+import { BasicForm } from "../../../shared/Forms/BasicForm";
 import { loginForm } from "../../../static/FormJsonObj/FormJsonObj";
+
 
 export const Login = (props) => {
   const dispatch = useDispatch();

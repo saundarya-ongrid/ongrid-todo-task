@@ -1,7 +1,8 @@
 import { Col, Row } from "antd";
 import React from "react";
 import { useSelector } from "react-redux";
-import { PieChart } from "../../../../components/Charts/Pie/Index";
+import { PieChart } from "../../../../shared/Charts/Pie/Index";
+
 
 export const TaskStatus = () => {
   const storedTodo = useSelector(state=>state.todoReducer.todoData)

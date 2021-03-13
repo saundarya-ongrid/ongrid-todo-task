@@ -1,5 +1,6 @@
 import React from 'react'
-import { CustomButton } from '../../../components/UI/CustomButton'
+import { CustomButton } from '../../../shared/UI/CustomButton'
+
 
 export const Home = (props) => {
     return (

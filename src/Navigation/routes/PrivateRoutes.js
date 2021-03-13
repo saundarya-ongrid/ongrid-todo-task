@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { SideMenu } from "../../containers/Layout/SideMenu/Index";
 import { Layout } from "antd";
+import { SideMenu } from "../../layout/SideMenu/Index";
+
 const { Content } = Layout;
 
 export const PrivateRoute = ({ component: Component, ...rest }) => {
