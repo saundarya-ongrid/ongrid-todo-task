@@ -12,8 +12,8 @@ const loginReducer = (state = initialState, action) => {
       return { ...state, isAuth: true, username: action.response.username };
     case types.LOGIN_USER_ERROR:
       return { ...state, isAuth: false };
-    case types.LOG_OUT_USER:
-      return { ...state, isAuth: false, username : '' };
+    // case types.LOG_OUT_USER:
+    //   return { ...state, isAuth: false, username : '' };
     default:
       return state;
   }
