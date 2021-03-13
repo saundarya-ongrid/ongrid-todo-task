@@ -2,8 +2,8 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { MenuLinks } from "./MenuLinks/MenuLinks";
 import { useDispatch } from "react-redux";
-import { logoutAction } from "../../actions/allActions";
 import { history } from "../../store/store";
+import { logoutAction } from "../../screens/public/Login/actions/loginUserAction";
 
 
 
