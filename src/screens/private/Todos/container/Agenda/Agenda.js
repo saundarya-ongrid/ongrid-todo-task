@@ -15,9 +15,9 @@ export const Agenda = () => {
   storedTodo.map((val) => (val.startDateTime = new Date(val.startDateTime)));
   const now = new Date();
   const colors = {
-    todo: "rgba(235, 85, 59, 1)",
-    inProgress: "rgba(242, 177, 52, 1)",
-    done: "rgba(102, 195, 131 , 1)",
+    todo: "#A0350A",
+    inProgress: "#BEC60C",
+    done: "#086E4D",
   };
 
   const [items, setItems] = useState(storedTodo);
@@ -178,9 +178,9 @@ export const Agenda = () => {
               justifyContent: "space-around",
             }}
           >
-            <span style={{ color: "rgba(235, 85, 59, 1)" }}>*Todo</span>
-            <span style={{ color: "rgba(242, 177, 52, 1)" }}>*In Progress</span>
-            <span style={{ color: "rgba(102, 195, 131 , 1)" }}>*Done </span>
+            <span style={{ color: "#A0350A" }}>*Todo</span>
+            <span style={{ color: "#BEC60C" }}>*In Progress</span>
+            <span style={{ color: "#086E4D" }}>*Done </span>
           </span>
         </Modal>
       ) : (
@@ -189,3 +189,4 @@ export const Agenda = () => {
     </div>
   );
 };
+

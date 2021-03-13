@@ -27,3 +27,12 @@
 .control-buttons button {
   width: 17%;
 }
+
+.agenda-item-description{
+  background: rgb(46, 46, 46);
+}
+
+.agenda-item-description small {
+  color: #e1f1fa;
+  font-size: 12px;
+}

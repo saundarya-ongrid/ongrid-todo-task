@@ -34,6 +34,7 @@ const dispatch = useDispatch();
           minHeight: "100vh",
         }}
       >
+        <img src='https://ongrid.in/images/home/logo/logo_ongrid-darkbakground.png' style={{height:'60px', padding:'5px', marginLeft:'15px'}} alt='logo'/>
         {MenuLinks.map((value) => {
           return (
             <Menu.Item

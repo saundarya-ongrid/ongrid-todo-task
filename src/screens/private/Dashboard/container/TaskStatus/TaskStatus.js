@@ -41,13 +41,15 @@ export const TaskStatus = () => {
     ],
   };
 
+
+  
   const options = [
     {
       ...commonOptions,
       fill: {
-        colors: ["#5B9BD5", "rgba(102, 195, 131 , 1)"],
+        colors: ["#5B9BD5", "#086E4D"],
       },
-      colors: ["#5B9BD5", "rgba(102, 195, 131 , 1)"],
+      colors: ["#5B9BD5", "#086E4D"],
 
       labels: ["Total Task", "Completed"],
     },
@@ -56,9 +58,9 @@ export const TaskStatus = () => {
       ...commonOptions,
 
       fill: {
-        colors: ["#5B9BD5", "rgba(242, 177, 52, 1)"],
+        colors: ["#5B9BD5", "#BEC60C"],
       },
-      colors: ["#5B9BD5", "rgba(242, 177, 52, 1)"],
+      colors: ["#5B9BD5", "#BEC60C"],
       labels: ["Total Task", "Undergoing"],
     },
 
@@ -66,9 +68,9 @@ export const TaskStatus = () => {
       ...commonOptions,
 
       fill: {
-        colors: ["#5B9BD5", "rgba(235, 85, 59, 1)"],
+        colors: ["#5B9BD5", "#A0350A"],
       },
-      colors: ["#5B9BD5", "rgba(235, 85, 59, 1)"],
+      colors: ["#5B9BD5", "#A0350A"],
       labels: ["Total Task", "Todo"],
     },
   ];
